@@ -1,97 +1,90 @@
-/* General Styles */
+/* Base Styles */
 body, html {
     margin: 0;
     padding: 0;
-    height: 100vh; /* Full viewport height */
-    display: flex; /* Use flex to center content */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    overflow: hidden; /* Prevents scrollbars */
-    font-family: Arial, sans-serif; /* Font style */
+    box-sizing: border-box;
+    background-color: #000;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent scrollbars from appearing */
+    font-family: 'Brush Script MT', cursive; /* Use Brush Script MT font */
 }
 
 /* Video Container */
 .video-container {
-    position: relative; /* Relative position for video */
-    width: 400px; /* Fixed width */
-    height: 700px; /* Fixed height */
-    overflow: hidden; /* Hide overflow to maintain aspect ratio */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 /* Video Styling */
-#bg-video {
-    width: 100%; /* Full width of the container */
-    height: 100%; /* Full height of the container */
-    object-fit: cover; /* Cover the entire container */
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover to fill the container */
 }
 
-/* Overlay Styles */
-.overlay {
+/* Overlay Content Styles */
+.overlay-content {
     position: absolute;
-    top: 60%; /* Move content slightly down */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for centering */
-    text-align: center; /* Center text */
-    color: white; /* Text color */
-    z-index: 1; /* Place above video */
-    width: 90%; /* Reduce the overall overlay area */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    text-align: center;
 }
 
-/* Title Styling */
-#invitationTitle {
-    font-size: 2.25em; /* Reduced font size by 10% */
-    font-family: 'Brush Script MT', cursive; /* Stylish font */
-    margin-bottom: 0.45em; /* Reduced space below title */
-    color: #ffb900; /* Title color */
-}
-
-/* Friend Name Display Styling */
-#friendNameDisplay {
-    font-size: 2.7em; /* Reduced font size by 10% */
-    font-family: 'Georgia', serif; /* Stylish font */
-    margin-bottom: 0.9em; /* Reduced space below friend's name */
-    color: #ffb900; /* Friend name color */
-}
-
-/* Button Styling */
-.overlay button {
-    padding: 9px 13px; /* Reduced padding by 10% */
-    margin: 5px;
+/* Input Field Styles */
+.input-field {
+    padding: 10px; /* Adjusted padding for a better look */
+    margin: 15px 0;
     border: none;
-    border-radius: 10px; /* Rounded corners */
-    background-color: rgba(255, 152, 0, 0.8); /* Semi-transparent button color */
-    color: white; /* Text color */
-    cursor: pointer; /* Pointer on hover */
-    font-size: 0.9em; /* Reduced font size by 10% */
-    transition: transform 0.2s, background-color 0.3s; /* Smooth transition for hover effect */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 3D effect */
+    border-radius: 5px;
+    width: 50%; /* Reduced width to 30% */
+    font-size: 14px; /* Adjusted font size */
+    background-color: rgba(255, 255, 255, 0.2); /* More transparent white background */
+    color: white; /* Text color for input field */
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 20px; /* Adjusted padding for a better look */
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 217, 0, 0.929); /* More transparent white background */
+    color: rgb(0, 0, 0); /* Change button text color to white for better visibility */
+    font-size: 14px; /* Adjusted font size */
+    font-weight: 600; /* Increased font weight for better visibility */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Added transition for color change */
+    margin: 5px; /* Smaller margin between buttons */
+    width: 70%; /* Reduced button width to 30% */
 }
 
 /* Button Hover Effect */
-.overlay button:hover {
-    background-color: rgba(255, 152, 0, 1); /* Darker on hover */
-    transform: translateY(-2px); /* Move up on hover for 3D effect */
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Slightly less transparent on hover */
 }
 
-/* Responsive Design */
-@media (max-width: 767px) {
-    /* Adjust sizes for mobile devices */
-    .video-container {
-        width: 90%; /* Full width on smaller screens */
-        height: auto; /* Maintain aspect ratio */
-        aspect-ratio: 400 / 700; /* Maintain original aspect ratio */
-    }
-    
-    #invitationTitle {
-        font-size: 1.8em; /* Adjust title size for mobile */
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .video {
+        object-fit: cover;
     }
 
-    #friendNameDisplay {
-        font-size: 2.2em; /* Adjust friend's name size for mobile */
+    .input-field {
+        width: 90%; /* Adjust input field width on smaller screens */
     }
 
-    .overlay button {
-        font-size: 0.8em; /* Adjust button size for mobile */
+    .btn {
+        width: 80%; /* Adjust button width on smaller screens */
+        font-size: 12px; /* Further reduce font size on smaller screens */
     }
 }
-
