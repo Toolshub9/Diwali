@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diwali Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="bg-video">
+            <source src="background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="overlay">
+        <h1 id="invitationTitle">Diwali Invitation</h1>
+        <h2 id="friendNameDisplay"></h2>
+        <button id="shareButton">Share</button>
+        <button id="generateForFriends">Generate New</button>
+    </div>
+
+    <script>
+        // Get the friend's name from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const friendName = urlParams.get('name');
+        document.getElementById('friendNameDisplay').innerText = friendName;
+
+        // Share button functionality
+        document.getElementById('shareButton').addEventListener('click', function() {
+            const shareText = `You're invited to a Diwali celebration! Name: ${friendName}`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Generate for friends button functionality
+        document.getElementById('generateForFriends').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
