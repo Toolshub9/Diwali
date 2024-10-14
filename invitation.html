@@ -8,34 +8,46 @@
 </head>
 <body>
     <div class="video-container">
-        <video autoplay muted loop id="bg-video">
+        <video class="video" autoplay loop muted playsinline>
             <source src="background.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
-    <div class="overlay">
-        <h1 id="invitationTitle">Diwali Invitation</h1>
-        <h2 id="friendNameDisplay"></h2>
-        <button id="shareButton">Share</button>
-        <button id="generateForFriends">Generate New</button>
+
+    <div class="overlay-content" style="margin-top: 10%;">
+        <h1 id="greeting" style="font-size: 38.4px; color: rgb(255, 162, 0); text-align: center; font-weight: normal; margin-bottom: 0;"></h1> <!-- Removed margin-bottom -->
+        <h2 id="friendNameDisplay" style="font-size: 38.4px; color: rgb(255, 162, 0); text-align: center; margin: 1; font-weight: normal;"></h2> <!-- Removed margin -->
+        <button id="shareBtn" class="btn" style="margin: 0;">Share</button> <!-- Button name remains "Share" -->
+        <button id="newInvitationBtn" class="btn" style="margin: 1;">Generate</button> <!-- Changed to "Generate" -->
     </div>
 
     <script>
-        // Get the friend's name from the URL query parameter
+        // Get the friend's name from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const friendName = urlParams.get('name');
-        document.getElementById('friendNameDisplay').innerText = friendName;
+        const name = urlParams.get('name');
+
+        // Display the greeting message
+        document.getElementById('greeting').innerText = `Happy Diwali!`;
+
+        // Display the friend's name below the greeting
+        document.getElementById('friendNameDisplay').innerText = name; // Show the friend's name
 
         // Share button functionality
-        document.getElementById('shareButton').addEventListener('click', function() {
-            const shareText = `You're invited to a Diwali celebration! Name: ${friendName}`;
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
-            window.open(whatsappUrl, '_blank');
+        document.getElementById('shareBtn').addEventListener('click', function() {
+            const shareText = `Happy Diwali,\n${name}!`; // Changed to include a line break
+            const shareUrl = window.location.href; // URL of the current page
+            const shareMessage = `${shareText}\n\nCheck it out: ${shareUrl}`;
+            
+            // Sharing options (you can customize this as needed)
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareMessage)}`;
+
+            // Open sharing links in a new tab
+            window.open(whatsappUrl, '_blank'); // Share via WhatsApp
         });
 
-        // Generate for friends button functionality
-        document.getElementById('generateForFriends').addEventListener('click', function() {
-            window.location.href = 'index.html';
+        // Generate New Invitation button functionality
+        document.getElementById('newInvitationBtn').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Go back to the first page
         });
     </script>
 </body>
